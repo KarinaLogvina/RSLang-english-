@@ -25,7 +25,10 @@ const weeklyAchivments = (state) => {
     for (let i = 0; i < 7; i += 1) {
         firstDay.setDate(firstDay.getDate() + 1);
         const key = statUtils.convertDate(firstDay);
-        const value = stats[key] ? stats[key].d <= stats[key].l : false;
+        let value = false;
+        if (stats) {
+            value = stats[key] ? stats[key].d <= stats[key].l : false;
+        }
         arr.push({
             day: dayOfWeeks[firstDay.getDay()],
             value,
